@@ -1,0 +1,102 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <h2>Add Profile</h2>
+              <form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+                <!-- @firstname -->
+                <div class="form-group">
+                  <label for="firstname">Firstname</label>
+                  <input
+                    type="text"
+                    formControlName="firstname"
+                    class="form-control"
+                    [ngClass]="{
+                      'is-invalid': submitted && f.firstname.errors
+                    }"
+                  />
+                  <div
+                    *ngIf="submitted && f.firstname.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.firstname.errors.required">
+                      firstname is required
+                    </div>
+                  </div>
+                </div>
+                <!-- @end -->
+
+                <!-- @lastname -->
+                <div class="form-group">
+                  <label for="lastname">Lastname</label>
+                  <input
+                    type="text"
+                    formControlName="lastname"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"
+                  />
+                  <div
+                    *ngIf="submitted && f.lastname.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.lastname.errors.required">
+                      lastname is required
+                    </div>
+                  </div>
+                </div>
+                <!-- @end -->
+
+                <!-- @phone_no -->
+                <div class="form-group">
+                  <label for="phone_no">Phone No</label>
+                  <input
+                    type="number"
+                    formControlName="phone_no"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.phone_no.errors }"
+                  />
+                  <div
+                    *ngIf="submitted && f.phone_no.errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f.phone_no.errors.required">
+                      phone no is required
+                    </div>
+                  </div>
+                </div>
+                <!-- @end -->
+
+                <!-- @image -->
+                <div class="form-group">
+                  <label for="image">Profile Pic</label>
+                  <div>
+                    <img
+                      height="50px"
+                      width="50px"
+                      src="{{ imageData1 }}"
+                      *ngIf="show"
+                    />
+                  </div>
+                  <input
+                    type="file"
+                    (change)="onfileChange($event)"
+                    class="form-control"
+                    formControlName="filename"
+                  />
+                </div>
+                <!-- @end -->
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">save</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

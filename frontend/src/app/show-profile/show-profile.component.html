@@ -1,0 +1,80 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container" *ngFor="let obj of arrProfile">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <h2 class="card-title">{{ obj.name }} Profile</h2>
+              <br />
+              <div class="row  justify-content-md-center">
+                <div class="col-sm-12">
+                  <div class="row">
+                    <div class="col-3">
+                      <div
+                        (mouseenter)="mouseEnter()"
+                        (mouseleave)="mouseLeave()"
+                      >
+                        <!-- image -->
+                        <div *ngIf="image1; else image2">
+                          <img
+                            height="100"
+                            width="100"
+                            src="{{ obj.profile_pic }}"
+                          />
+                          <div *ngIf="link">
+                            <button (click)="edit3(obj)">Edit</button>
+                          </div>
+                        </div>
+                        <ng-template #image2>
+                          <img src="{{ imageData }}" height="100" width="100" />
+                          <input
+                            type="file"
+                            (change)="onfileChange($event)"
+                            [(ngModel)]="profile_pic"
+                          />
+                          <button (click)="imageUpdate()">update</button>
+                          <button (click)="cancel()">Cancel</button>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+
+                  <br />
+                  <br />
+                  <!-- end -->
+                  <!--  -->
+
+                  <div>
+                    <h5>Name</h5>
+                    <div *ngIf="name1; else name2">
+                      {{ obj.name }} <button (click)="edit1(obj)">edit</button>
+                    </div>
+                    <ng-template #name2>
+                      <input type="text" [(ngModel)]="name" />
+                      <button (click)="nameEditDone()">Update</button>
+                      <button (click)="cancel()">Cancel</button>
+                    </ng-template>
+                  </div>
+
+                  <div>
+                    <h5>Phone No</h5>
+                    <div *ngIf="phone1; else phone2">
+                      {{ obj.phone_no }}
+                      <button (click)="edit2(obj)">edit</button>
+                    </div>
+                    <ng-template #phone2>
+                      <input type="number" [(ngModel)]="phone_no" />
+                      <button (click)="phoneEditDone()">Update</button>
+                      <button (click)="cancel()">Cancel</button>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,25 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i>All Profiles
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone No</th>
+            <th>ShowProfile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let obj of arrTable">
+            <td>{{ obj.name }}</td>
+            <td>{{ obj.phone_no }}</td>
+            <td><a routerLink="/show-profile/{{ obj._id }}">Profile</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
